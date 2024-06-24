@@ -6,4 +6,4 @@ The prototype includes a screen, 3 buttons which help to navigate through the sy
 It is implemented with Bela "the platform for creating beautiful interaction" (https://bela.io/). In this case, I've used Bela Mini and the Trill Craft sensor from Bela.
 The sounds of different instruments have been implemented using the STK library (https://ccrma.stanford.edu/software/stk/classstk_1_1Stk.html).
 
-As you can see, MeloPad includes hardware, software, mechanics and a lot of patience and love for details. It's been fun, and tough sometimes, but I learnt so much.
+As you can see, MeloPad includes hardware (more information here: https://github.com/JasminThieme/MeloPad-3D), software, mechanics and a lot of patience and love for details. It's been fun, and tough sometimes, but I've learnt so much.
