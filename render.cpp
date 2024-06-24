@@ -4,7 +4,7 @@
 #include <libraries/AudioFile/AudioFile.h> 
 #include "Display.h" 
 #include "Teclado.h"
-#include "Drums.h"
+
 
 //using namespace stk;
 #define NUM_CAP_CHANNELS 30   
@@ -26,7 +26,6 @@ Debouncer gDebouncer4;
 
 Display pantalla;
 Teclado teclado; 
-//Drums drum;
 
 // Trill object declaration
 Trill touchSensor;
@@ -121,57 +120,6 @@ void state_machine (){
 	        }
 	    break;
 		case RECORD:  
-			//graba melodia y guardar en soundBuffer
-		    if(button==Button3){ //Stop grabacion
-		    	grabado=true;
-	        	estado=STOP_REC; 
-		        evento=1;
-	        }
-		break;
-		case STOP_REC: 
-			//reproduce melodia grabada
-			if(button==Button2){ //Retry
-	        	estado=INFO; 
-		        evento=1;
-	        }  
-		    if(button==Button3){ //Guardar
-	        	estado=SAVE_MEL; 
-		        evento=1;
-	        }
-		break;
-		case SAVE_MEL:
-			//guarda melodía en memoria
-	        if(button>0){ //Pulsa cualquier boton
-		        estado=INFO;
-		        evento=1;
-	        }
-	    break;
-	    default: 
-		    estado=INITIAL;
-		    break;
-	    } 
-	} else if (sabana==BATERIA) {
-		switch (estado) {
-	    case INITIAL: 
-	        if(button>0){
-		        estado=INFO;
-		        evento=1;
-	        }
-	    break;
-	    case INFO:  
-			if(button==Button2){ //Grabar
-				posicion_buffer = 0; 
-				gElapsedTime = 0;
-				grabado=false;
-				estado=RECORD;
-				evento=1;
-			}
-		    if(button==Button3){ //Volver al inicio
-	        	estado=INITIAL; 
-		        evento=1;
-	        }
-	    break;
-	    case RECORD:  
 			//graba melodia y guardar en soundBuffer
 		    if(button==Button3){ //Stop grabacion
 		    	grabado=true;
@@ -388,9 +336,6 @@ void render(BelaContext *context, void *userData){
 			if(sabana==TECLADO){
 				teclado.process(); 
 				out=teclado.output; 
-			} else if (sabana==BATERIA){
-				//drum.process();
-				//out=drum.outDrums;
 			} 
 		}else if(estado==STOP_REC){
 			out=soundBuffer[lectura_buffer]; 
